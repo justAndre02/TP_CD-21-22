@@ -1,0 +1,19 @@
+{
+  "name": "tp_cd",
+  "version": "1.0.0",
+  "description": "Job Shop",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndreTeixeira-21126/TP_CD.git"
+  },
+  "author": "André Teixeira, Nárcio Silvestre",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndreTeixeira-21126/TP_CD/issues"
+  },
+  "homepage": "https://github.com/AndreTeixeira-21126/TP_CD#readme"
+}
