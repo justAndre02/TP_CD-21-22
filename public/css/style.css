@@ -1,0 +1,28 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+header {
+   display: flex;
+   flex-direction: row;
+   align-items: flex-end;
+
+}
+nav {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    
+    
+}
+li {
+    list-style-type: none;
+   
+    
+
+}
+li a{
+    margin-left: 20px;
+    
+
+}
