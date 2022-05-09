@@ -22,8 +22,10 @@ router.get("/getSimulations/:id",simulationGetId);
 router.get("/",(req,res) => {
     res.render("simulation");
 })
-router.delete("/deleteSimulation/:id",deleteSimulation_delete);
-
+router.post("/deleteSimulation/execute",jsonParser,deleteSimulation_delete);
+router.get("/deleteSimulation/", (req, res) => {
+    res.render("deleteSimulationPage");
+});
 module.exports = router;
 
 

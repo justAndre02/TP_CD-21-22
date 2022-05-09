@@ -8,8 +8,10 @@
 </head>
 <body>
     <%- include("./partials/header"); %>
-    <a href="/simulation/createSimulation">Add Simulation</a>
-    <a href="/simulation/getSimulations">Get Simulations</a>
-    <a href="/simulation/deleteSimulation">Delete Simulation</a>
+    <form action="/simulation/deleteSimulation/execute" method="post" enctype="application/json">
+        <input type="text" name = "id" placeholder="ID">
+        <button type="submit">Delete</button>
+    </form>
+
 </body>
 </html>
