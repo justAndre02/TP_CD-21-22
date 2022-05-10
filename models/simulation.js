@@ -1,7 +1,7 @@
 let simulations = [];
 
 const createSimulation = (nMachines, nJobs, nOperations) =>
-{
+{   if(nMachines != nOperations) return false;
     simulations.push({numberOfMachines : nMachines, numberOfJobs: nJobs, numberOfOperations: nOperations});
     return true;
 } 

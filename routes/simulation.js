@@ -12,11 +12,20 @@ const router = express.Router();
 
 let jsonParser = bodyParser.json();
 
-router.post("/createSimulation", jsonParser, simulationPost);
+router.post("/createSimulation/execute", jsonParser, simulationPost);
+router.get("/createSimulation/", (req,res) =>
+{
+    res.render("createSimulationPage");
+});
 router.get("/getSimulations", simulationGet);
 router.get("/getSimulations/:id",simulationGetId);
-router.delete("/deleteSimulation/:id",deleteSimulation_delete);
-
+router.get("/",(req,res) => {
+    res.render("simulation");
+})
+router.post("/deleteSimulation/execute",jsonParser,deleteSimulation_delete);
+router.get("/deleteSimulation/", (req, res) => {
+    res.render("deleteSimulationPage");
+});
 module.exports = router;
 
 

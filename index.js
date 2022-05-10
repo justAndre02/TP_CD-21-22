@@ -5,10 +5,13 @@ const bodyParser = require("body-parser");
 
 const PORT = process.env.PORT || 3000;
 
+app.set("view engine", "ejs");
+app.set("views","./views");
 app.use(bodyParser.urlencoded({extended: true}))
+app.use(express.static(__dirname + "/public"));
 
 app.get("/",(req, res) => {
-    res.send("Hello World");
+    res.render("index");
 });
 app.use("/simulation", simulationRouter);
 app.listen(PORT, () => {

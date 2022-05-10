@@ -2,10 +2,15 @@ const createSimulation = require("../models/simulation").createSimulation;
 const getSimulations = require("../models/simulation").getSimulations;
 const deleteSimulation = require("../models/simulation").deleteSimulation;
 const getSimulationWithId = require("../models/simulation").getSimulationWithId;
+
 const createSimulation_post = async (req, res) => {
     
    console.log("body: ", req.body);
-   createSimulation(req.body.numberOfMachines,req.body.numberOfJobs, req.body.numberOfOperations);
+   if(!createSimulation(req.body.numberOfMachines,req.body.numberOfJobs, req.body.numberOfOperations)) 
+   {
+       await res.status(400).send("Bad request");
+       return;
+   }
    await res.status(200).send("OK");
 }
 
@@ -24,13 +29,18 @@ const getSimulationWithId_get = async(req, res) => {
     return false;
 }
 
-const deleteSimulation_delete = async(req, res) => {
-    if(req.params.id < 1 || req.params.id > getSimulations().length)
+const deleteSimulation_post = async(req, res) => {
+    if(!req.body)
     {
         res.status(400).send("Bad request");
         return false;
     }
-    deleteSimulation(req.params.id - 1);
+    if(Number(req.body.id) < 1 || Number(req.body.id) > getSimulations().length )
+    {
+        res.status(400).send("Bad request");
+        return false;
+    }
+    deleteSimulation(Number(req.body.id) - 1);
     
     res.status(200).send("OK");
     return true;
@@ -38,5 +48,5 @@ const deleteSimulation_delete = async(req, res) => {
 
 exports.createSimulation_post = createSimulation_post;
 exports.getSimulations_get = getSimulations_get;
-exports.deleteSimulation_delete = deleteSimulation_delete;
+exports.deleteSimulation_delete = deleteSimulation_post;
 exports.getSimulationWithId_get = getSimulationWithId_get;
